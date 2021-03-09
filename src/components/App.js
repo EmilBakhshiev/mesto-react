@@ -10,6 +10,7 @@ function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+    const [isDeletepopup, setIsDeletePopup] = useState(false);
     const [selectedCard, setSelectedCard] = useState({name:'', link:''});
 
     function handleEditAvatarClick() {
@@ -23,11 +24,15 @@ function App() {
     function handleAddPlaceClick() {
         setIsAddPlacePopupOpen(true);
     }
+    function handlDeleteCard(){
+        setIsDeletePopup(true);
+    }
 
     function closeAllPopups(){
         setIsEditProfilePopupOpen(false);
         setIsEditAvatarPopupOpen(false);
         setIsAddPlacePopupOpen(false);
+        setIsDeletePopup(false);
         setSelectedCard({name:'', link:''});
     }
     function handleCardClick(Card){
@@ -41,7 +46,8 @@ function App() {
                 onEditAvatar={handleEditAvatarClick}
                 onEditProfile={handleEditProfileClick}
                 onAddPlace={handleAddPlaceClick}
-                onCardClick={handleCardClick} 
+                onCardClick={handleCardClick}
+                onRemoveCard={handlDeleteCard} 
                />
             <ImagePopup 
             card = {selectedCard}
@@ -77,7 +83,12 @@ function App() {
                 <input type="url" className="popup__input" name="link" id="image-link" placeholder="Ссылка на картинку" required />
                 <span id="image-link-error" className="error"></span>
             </PopupWithForm>
-            
+            <PopupWithForm
+            isOpen={isDeletepopup}
+            onClose ={closeAllPopups}
+            name='delete-card-form'
+            title='Вы уверены?'
+            textButton='Да'/>
             <Footer />
 
         </div>
