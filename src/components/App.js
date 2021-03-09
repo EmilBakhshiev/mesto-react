@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../index.css';
 import Header from './Header.js';
 import Main from './Main.js';
 import Footer from './Footer.js';
@@ -33,7 +32,6 @@ function App() {
     }
     function handleCardClick(Card){
         setSelectedCard(Card);
-        console.log(Card)
     }
 
     return (
@@ -52,7 +50,8 @@ function App() {
                 isOpen={isEditProfilePopupOpen}
                 onClose ={closeAllPopups}
                 name='edit-profile-form'
-                title='Редактирование профиля'>
+                title='Редактирование профиля'
+                textButton='Сохранить'>
                 <input type="text" className="popup__input" name="name" id="name" required minLength="2" maxLength="40" />
                 <span id="name-error" className="error"></span>
                 <input type="text" className="popup__input" name="about" id="about-me" required minLength="2" maxLength="200" />
@@ -62,7 +61,8 @@ function App() {
                 isOpen={isEditAvatarPopupOpen}
                 onClose ={closeAllPopups}
                 name='avatar-form'
-                title='Обновить аватар'>
+                title='Обновить аватар'
+                textButton='Сохранить'>
                 <input type="url" className="popup__input" name="link" id="avatar-link" placeholder="Название" required />
                 <span id="avatar-link-error" className="error"></span>
             </PopupWithForm>
@@ -70,13 +70,14 @@ function App() {
              isOpen={isAddPlacePopupOpen}
              onClose ={closeAllPopups}
               name='add-card-form'
-               title='Новое место'>
+               title='Новое место'
+               textButton='Создать'>
                 <input type="text" className="popup__input" name="name" id="place-name" placeholder="Название" required minLength="2" maxLength="30" />
                 <span id="place-name-error" className="error"></span>
                 <input type="url" className="popup__input" name="link" id="image-link" placeholder="Ссылка на картинку" required />
                 <span id="image-link-error" className="error"></span>
             </PopupWithForm>
-
+            
             <Footer />
 
         </div>

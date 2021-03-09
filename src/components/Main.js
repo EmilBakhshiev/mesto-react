@@ -1,32 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import '../index.css';
-import api from '../utils/Api.js'
+import api from '../utils/api.js'
 import Card from './Card.js'
 
 function Main(props) {
-    const [userName, setUserName] = useState([]);
-    const [userDescription, setUserDescription] = useState([]);
-    const [userAvatar, setUserAvatar] = useState([]);
+    const [userName, setUserName] = useState('');
+    const [userDescription, setUserDescription] = useState('');
+    const [userAvatar, setUserAvatar] = useState('');
     const [cards, setCards] = useState([]);
     
     useEffect(() => {
-        getUserInfo();
-        getCards();
-    }, [])
-
-    function getUserInfo() {
         api.getProfileInfo()
-            .then((res) => {
-                setUserName(res.name);
-                setUserDescription(res.about);
-                setUserAvatar(res.avatar);
-            })
-            .catch((err)=>{
-                console.error(err);
-            })
-    }
+        .then((res) => {
+            setUserName(res.name);
+            setUserDescription(res.about);
+            setUserAvatar(res.avatar);
+        })
+        .catch((err)=>{
+            console.error(err);
+        });
 
-    function getCards() {
         api.getInitialCards()
             .then((data) => {
                 setCards(data);
@@ -34,7 +26,7 @@ function Main(props) {
             .catch((err)=>{
                 console.error(err);
             })
-    }
+    }, [])
 
     return (
         <main className="content">
@@ -55,7 +47,7 @@ function Main(props) {
 
             <section className="galery">
            {cards.map((item)=>{
-            return <Card card={item} key={item._id} onCardClick={props.onCardClick}/>
+            return (<Card card={item} key={item._id} onCardClick={props.onCardClick}/>)
            })} 
             </section>
         </main>
