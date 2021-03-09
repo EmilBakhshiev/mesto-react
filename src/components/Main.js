@@ -8,7 +8,7 @@ function Main(props) {
     const [userDescription, setUserDescription] = useState([]);
     const [userAvatar, setUserAvatar] = useState([]);
     const [cards, setCards] = useState([]);
-
+    
     useEffect(() => {
         getUserInfo();
         getCards();
@@ -55,7 +55,7 @@ function Main(props) {
 
             <section className="galery">
            {cards.map((item)=>{
-            return <Card card={item} key={item._id} onCardClick={item}/>
+            return <Card card={item} key={item._id} onCardClick={props.onCardClick}/>
            })} 
             </section>
         </main>
