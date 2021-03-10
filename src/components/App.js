@@ -10,7 +10,7 @@ function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-    const [isDeletepopup, setIsDeletePopup] = useState(false);
+    const [isDeletePopup, setIsDeletePopup] = useState(false);
     const [selectedCard, setSelectedCard] = useState({name:'', link:''});
 
     function handleEditAvatarClick() {
@@ -24,7 +24,7 @@ function App() {
     function handleAddPlaceClick() {
         setIsAddPlacePopupOpen(true);
     }
-    function handlDeleteCard(){
+    function handleDeleteCard(){
         setIsDeletePopup(true);
     }
 
@@ -47,7 +47,7 @@ function App() {
                 onEditProfile={handleEditProfileClick}
                 onAddPlace={handleAddPlaceClick}
                 onCardClick={handleCardClick}
-                onRemoveCard={handlDeleteCard} 
+                onRemoveCard={handleDeleteCard} 
                />
             <ImagePopup 
             card = {selectedCard}
@@ -84,7 +84,7 @@ function App() {
                 <span id="image-link-error" className="error"></span>
             </PopupWithForm>
             <PopupWithForm
-            isOpen={isDeletepopup}
+            isOpen={isDeletePopup}
             onClose ={closeAllPopups}
             name='delete-card-form'
             title='Вы уверены?'
