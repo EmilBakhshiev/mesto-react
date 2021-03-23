@@ -3,7 +3,7 @@ import Card from './Card.js'
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main(props) {
-    
+
     const currentUser = useContext(CurrentUserContext);
 
 
@@ -28,7 +28,7 @@ function Main(props) {
             <section className="galery">
                 {props.cards.map((item) => {
                     return (<Card card={item} key={item._id} onCardClick={props.onCardClick} onCardDelete={props.onCardDelete} onRemoveCard={props.onRemoveCard} onCardLike={props.onCardLike}
-                         />)
+                    />)
                 })}
             </section>
         </main>

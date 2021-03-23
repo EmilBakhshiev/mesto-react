@@ -112,18 +112,17 @@ function App() {
             });
     }
 
-//ADD CARD
-function handleAddPlaceSubmit(newCard) {
-    api.postCard(newCard)
-    .then((newCard) =>{
-        setCards([newCard, ...cards]);
-        closeAllPopups();
-    })
-}
+    //ADD CARD
+    function handleAddPlaceSubmit(newCard) {
+        api.postCard(newCard)
+            .then((newCard) => {
+                setCards([newCard, ...cards]);
+                closeAllPopups();
+            })
+    }
 
 
     return (
-
         <div className="page">
             <CurrentUserContext.Provider value={currentUser}>
                 <Header />
@@ -148,10 +147,10 @@ function handleAddPlaceSubmit(newCard) {
                     onClose={closeAllPopups}
                     onUpdateAvatar={handleUpdateAvatar} />
                 <AddPlacePopup
-                isOpen={isAddPlacePopupOpen}
-                onClose={closeAllPopups}
-                onAddPlace={handleAddPlaceSubmit}
-                 />
+                    isOpen={isAddPlacePopupOpen}
+                    onClose={closeAllPopups}
+                    onAddPlace={handleAddPlaceSubmit}
+                />
                 {/*<PopupWithForm
             isOpen={isDeletePopup}
             onClose ={closeAllPopups}
@@ -161,7 +160,6 @@ function handleAddPlaceSubmit(newCard) {
                 <Footer />
             </CurrentUserContext.Provider>
         </div>
-
     );
 }
 

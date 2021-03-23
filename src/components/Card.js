@@ -8,9 +8,9 @@ function Card(props) {
     const cardDeleteButtonClassName = (
         `${isOwn ? 'galery__card-remove' : 'galery__card-remove_hidden'}`
     );
-    
+
     const isLiked = props.card.likes.some(i => i._id === currentUser._id);
-    const cardLikeButtonClassName = `galery__card-like ${isLiked ? 'galery__card-like_active' : ''}`; 
+    const cardLikeButtonClassName = `galery__card-like ${isLiked ? 'galery__card-like_active' : ''}`;
 
     function handleClick() {
         props.onCardClick({ name: props.card.name, link: props.card.link });
@@ -19,9 +19,9 @@ function Card(props) {
     function handleLikeClick() {
         props.onCardLike(props.card)
 
-    } 
-    
-    function handleDeleteClick(){
+    }
+
+    function handleDeleteClick() {
         props.onCardDelete(props.card)
     }
 

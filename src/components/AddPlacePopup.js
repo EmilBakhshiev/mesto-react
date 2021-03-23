@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PopupWithForm from './PopupWithForm.js';
 
 
@@ -7,6 +7,12 @@ function AddPlacePopup(props) {
 
     const [name, setName] = useState('');
     const [link, setLink] = useState('');
+
+    useEffect(() => {
+        setName('');
+        setLink('');
+    }, [props.isOpen])
+
 
     function changeName(e) {
         setName(e.target.value);
@@ -34,9 +40,9 @@ function AddPlacePopup(props) {
             name='add-card-form'
             title='Новое место'
             textButton='Создать'>
-            <input defaultValue={''} type="text" className="popup__input" name="name" id="place-name" placeholder="Название" required minLength="2" maxLength="30" onChange={changeName} />
+            <input defaultValue={''} value={name} type="text" className="popup__input" name="name" id="place-name" placeholder="Название" required minLength="2" maxLength="30" onChange={changeName} />
             <span id="place-name-error" className="error"></span>
-            <input defaultValue={''} type="url" className="popup__input" name="link" id="image-link" placeholder="Ссылка на картинку" required onChange={changeLink} />
+            <input defaultValue={''} value={link} type="url" className="popup__input" name="link" id="image-link" placeholder="Ссылка на картинку" required onChange={changeLink} />
             <span id="image-link-error" className="error"></span>
         </PopupWithForm>
     )
